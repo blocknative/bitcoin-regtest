@@ -95,7 +95,9 @@ async function randomTransaction() {
 function mine() {
   const miner = randomInteger(0, N_USERS)
   const minerAddress = execSync(`${__dirname}/cli/user${miner} -regtest getnewaddress`).toString()
-  execSync(`${__dirname}/cli/user${miner} -regtest generatetoaddress 1 ${minerAddress}`)
+  const res = execSync(`${__dirname}/cli/user${miner} -regtest generatetoaddress 1 ${minerAddress}`).toString()
+  const blockHash = JSON.parse(res)[0]
+  console.log(`New block ${blockHash}`)
   setTimeout(mine, BLOCK_TIME * 1000)
 }
 
