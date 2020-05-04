@@ -6,14 +6,17 @@
 
 const { execSync } = require('child_process')
 
+const N_USERS = 3
+const BLOCK_TIME = 5
+
 async function main() {
   try {
     // If regtest nodes are already running stop them
     const dockerPsOut = execSync('docker ps -a').toString()
     if (dockerPsOut.includes('regtest')) {
-      console.log('--- STOPPING EXISTING REGTEST NODES ---')
+      console.log('--- CLEANING UP FROM PREVIOUS RUN ---')
       execSync(`${__dirname}/s/stop`)
-      console.log('Stopped')
+      console.log('Done')
     }
 
     // Build Docker image
@@ -60,8 +63,7 @@ function randomInteger(min, max) {
 }
 
 async function fundUsers() {
-  const nUsers = 9
-  for (let i = 0; i <= nUsers; i += 1) {
+  for (let i = 0; i <= N_USERS; i += 1) {
     // Mines a block for each user, giving them some btc
     const address = execSync(`${__dirname}/cli/user${i} -regtest getnewaddress`).toString()
     execSync(`${__dirname}/cli/user${i} -regtest generatetoaddress 101 ${address}`)
@@ -74,8 +76,8 @@ async function randomTransaction() {
   await new Promise(r => setTimeout(r, randomNumber(50, 1000)))
 
   // Choose sender, receiver, amt to send
-  const sender = randomInteger(0, 9)
-  const receiver = randomInteger(0, 9)
+  const sender = randomInteger(0, N_USERS)
+  const receiver = randomInteger(0, N_USERS)
   const amount = randomNumber(0.00001, 0.01).toFixed(5)
 
   // Generate receive addr
@@ -91,9 +93,10 @@ async function randomTransaction() {
 }
 
 function mine() {
-  // const miner = randomInteger(0, 9)
-  // const mempoolinfo = execSync(`${__dirname}/cli/user${miner} help getmempoolinfo`).toString()
-  // console.log(mempoolinfo)
+  const miner = randomInteger(0, N_USERS)
+  const minerAddress = execSync(`${__dirname}/cli/user${miner} -regtest getnewaddress`).toString()
+  execSync(`${__dirname}/cli/user${miner} -regtest generatetoaddress 1 ${minerAddress}`)
+  setTimeout(mine, BLOCK_TIME * 1000)
 }
 
 function stopNodes() {
