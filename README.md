@@ -4,7 +4,9 @@
 
 Testing Bitcoin is difficult because block times are slow, and there are not many testnet transactions.
 
-Bitcoin regtest allows spinning up a Dockerized Bitcoin private network consisting of many connected nodes. The nodes periodically send Bitcoin eachother and mine a block every 5 seconds, allowing for much for rapid development.
+Bitcoin regtest allows spinning up a Dockerized Bitcoin private network consisting of many connected nodes. The nodes have funded wallets, and periodically send Bitcoin between eachother and mine a block every 5 seconds.
+
+This allows for much more rapid development compared to using the Bitcoin testnet, expecially when testing logic related to new blocks.
 
 ## Dependencies
 
