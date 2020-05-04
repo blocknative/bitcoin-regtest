@@ -6,7 +6,9 @@
 
 const { execSync } = require('child_process')
 const { log } = require('./logging')
+const { randomInteger, randomNumber } = require('./helpers')
 
+// Max 9 users
 const N_USERS = 3
 const BLOCK_TIME = 5
 
@@ -54,14 +56,6 @@ async function main() {
 }
 
 main()
-
-function randomNumber(min, max) {
-  return Math.random() * (max - min) + min
-}
-
-function randomInteger(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min
-}
 
 async function fundUsers() {
   for (let i = 0; i <= N_USERS; i += 1) {
