@@ -5,6 +5,7 @@
  */
 
 const { execSync } = require('child_process')
+const { log } = require('./logging')
 
 const N_USERS = 3
 const BLOCK_TIME = 5
@@ -88,7 +89,7 @@ async function randomTransaction() {
     .toString()
     .replace(/(\r\n|\n|\r)/gm, '') // remove training newline
 
-  console.log(`New pending tx ${txId}`)
+  log.normal(`New pending tx ${txId}`)
   randomTransaction()
 }
 
@@ -97,7 +98,7 @@ function mine() {
   const minerAddress = execSync(`${__dirname}/cli/user${miner} -regtest getnewaddress`).toString()
   const res = execSync(`${__dirname}/cli/user${miner} -regtest generatetoaddress 1 ${minerAddress}`).toString()
   const blockHash = JSON.parse(res)[0]
-  console.log(`New block ${blockHash}`)
+  log.normal(`New block ${blockHash}`)
   setTimeout(mine, BLOCK_TIME * 1000)
 }
 
