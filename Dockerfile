@@ -16,7 +16,7 @@ VOLUME ["/bitcoin"]
 COPY run_servers /usr/local/bin/run_servers
 COPY bitcoin /bitcoin/.bitcoin
 COPY users.json /bitcoin/users.json
-EXPOSE 18444 2000 2001 2002 2003 2004 2005 2006 2007 2008 2009
+EXPOSE 18444 2000 2001 2002 2003 2004 2005 2006 2007 2008 2009 29000
 
 # Start nodes
 CMD ["run_servers"]
