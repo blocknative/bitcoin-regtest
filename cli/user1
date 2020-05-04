@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker exec -it regtest bitcoin-cli -conf=user1 "$@"
+docker exec regtest bitcoin-cli -conf=user1 "$@"

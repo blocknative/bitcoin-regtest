@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker exec -it regtest bash
+docker exec regtest bash
