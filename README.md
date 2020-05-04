@@ -41,8 +41,6 @@ Rebuild the Docker image: `docker build --pull --no-cache --tag regtest-image:la
 
 ## Credit
 
-Thank you Alexey Lunacharsky for the initial implementation (https://github.com/alun/bitcoin-regtest)
+Thank you Alexey Lunacharsky for building the foundation this project was built on (https://github.com/alun/bitcoin-regtest)
 
 (c) 2015-2016 Alexey Lunacharsky
-
-Forked and modified for internal use by Blocknative
