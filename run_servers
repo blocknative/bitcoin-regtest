@@ -17,6 +17,6 @@ bitcoind -conf=user7
 bitcoind -conf=user8
 bitcoind -conf=user9
 
-while true ; do
+while true; do
     sleep 1
 done

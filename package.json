@@ -1,28 +1,33 @@
 {
   "name": "bitcoin-regtest",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Bitcoin regtest images generator",
-  "main": "generate.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alun/bitcoin-regtest.git"
+    "url": "git+https://github.com/blocknative/bitcoin-regtest.git"
   },
   "keywords": [
     "bitcoin",
     "docker",
     "image"
   ],
-  "author": "Aleksei Lunacharskii",
+  "author": "Blocknative",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/alun/bitcoin-regtest/issues"
+    "url": "https://github.com/blocknative/bitcoin-regtest/issues"
   },
-  "homepage": "https://github.com/alun/bitcoin-regtest#readme",
+  "homepage": "https://github.com/blocknative/bitcoin-regtest#readme",
   "dependencies": {
     "co": "^4.6.0",
     "promise-fs": "git@github.com:alun/promise-fs"
+  },
+  "devDependencies": {
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.3"
   }
 }
