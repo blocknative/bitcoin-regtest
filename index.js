@@ -9,7 +9,7 @@ const { log } = require('./logging')
 const { randomInteger, randomNumber } = require('./helpers')
 
 // Max 9 users
-const N_USERS = 3
+const N_USERS = 1
 const BLOCK_TIME = 5
 
 async function main() {
@@ -58,7 +58,7 @@ async function main() {
 main()
 
 async function fundUsers() {
-  for (let i = 0; i <= N_USERS; i += 1) {
+  for (let i = 0; i < N_USERS; i += 1) {
     // Mines a block for each user, giving them some btc
     const address = execSync(`${__dirname}/cli/user${i} -regtest getnewaddress`).toString()
     execSync(`${__dirname}/cli/user${i} -regtest generatetoaddress 101 ${address}`)
@@ -68,11 +68,11 @@ async function fundUsers() {
 
 async function randomTransaction() {
   // Wait between 0.05-1s
-  await new Promise(r => setTimeout(r, randomNumber(50, 1000)))
+  await new Promise(r => setTimeout(r, randomNumber(10, 100)))
 
   // Choose sender, receiver, amt to send
-  const sender = randomInteger(0, N_USERS)
-  const receiver = randomInteger(0, N_USERS)
+  const sender = randomInteger(0, N_USERS - 1)
+  const receiver = randomInteger(0, N_USERS - 1)
   const amount = randomNumber(0.00001, 0.01).toFixed(5)
 
   // Generate receive addr
@@ -88,7 +88,7 @@ async function randomTransaction() {
 }
 
 function mine() {
-  const miner = randomInteger(0, N_USERS)
+  const miner = randomInteger(0, N_USERS - 1)
   const minerAddress = execSync(`${__dirname}/cli/user${miner} -regtest getnewaddress`).toString()
   const res = execSync(`${__dirname}/cli/user${miner} -regtest generatetoaddress 1 ${minerAddress}`).toString()
   const blockHash = JSON.parse(res)[0]

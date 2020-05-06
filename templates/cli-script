@@ -1,3 +1,0 @@
-#!/bin/bash
-
-docker exec regtest bitcoin-cli -conf=${name} "$@"

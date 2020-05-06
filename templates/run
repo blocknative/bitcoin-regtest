@@ -1,3 +1,0 @@
-#!/bin/bash
-
-docker run -d ${ports} --name regtest regtest-image
