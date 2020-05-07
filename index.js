@@ -75,6 +75,9 @@ async function randomTransaction() {
   const receiver = randomInteger(0, N_USERS - 1)
   const amount = randomNumber(0.00001, 0.01).toFixed(5)
 
+  // Start sending next random tx now so it doesn't wait for this one to send
+  randomTransaction()
+
   // Generate receive addr
   const toAddress = execSync(`${__dirname}/cli/user${receiver} -regtest getnewaddress`).toString()
 
@@ -84,7 +87,6 @@ async function randomTransaction() {
     .replace(/(\r\n|\n|\r)/gm, '') // remove training newline
 
   log.normal(`New pending tx ${txId}`)
-  randomTransaction()
 }
 
 function mine() {

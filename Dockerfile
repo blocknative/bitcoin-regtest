@@ -1,9 +1,8 @@
 FROM ubuntu:18.04
 
-# Install Bitcoin
-COPY bitcoin-0.19.1-x86_64-linux-gnu.tar.gz bitcoin-0.19.1-x86_64-linux-gnu.tar.gz
-RUN tar -xf bitcoin-0.19.1-x86_64-linux-gnu.tar.gz
-ENV PATH="/bitcoin-0.19.1/bin:${PATH}"
+COPY btc-binaries.tar.gz btc-binaries.tar.gz
+RUN tar -xf btc-binaries.tar.gz
+ENV PATH="/btc-binaries:${PATH}"
 
 # Configure Bitcoin
 ENV HOME /bitcoin
@@ -13,6 +12,8 @@ VOLUME ["/bitcoin"]
 COPY run_servers /usr/local/bin/run_servers
 COPY bitcoin /bitcoin/.bitcoin
 COPY users.json /bitcoin/users.json
+
+EXPOSE 18444 1999 2000 2001 2002 2003 2004 2005 2006 2007 2008 2009 2010 29000
 
 # Start nodes
 CMD ["run_servers"]
