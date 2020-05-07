@@ -9,7 +9,7 @@ const { log } = require('./logging')
 const { randomInteger, randomNumber } = require('./helpers')
 
 // Max 9 users
-const N_USERS = 1
+const N_USERS = 9
 const BLOCK_TIME = 5
 
 async function main() {
