@@ -1,10 +1,10 @@
-# Bitcoin regtest
+# Bitcoin simulated network
 
 ## Description
 
 Testing Bitcoin is difficult because block times are slow, and there are not many testnet transactions.
 
-Bitcoin regtest allows spinning up a Dockerized Bitcoin private network consisting of many connected nodes. The nodes have funded wallets, and periodically send Bitcoin between eachother and mine a block every 5 seconds.
+Bitcoin simulated network allows spinning up a Dockerized Bitcoin regtest network consisting of many connected nodes. The nodes have funded wallets, and periodically send Bitcoin between each other. A random node is selected every 5 seconds to mine a block.
 
 This allows for much more rapid development compared to using the Bitcoin testnet, expecially when testing logic related to new blocks.
 
@@ -28,7 +28,7 @@ Run nodes (first time running this will take some time because Docker needs to b
 node index.js
 ```
 
-RPC exposed on port 2000
+RPC exposed on port 1999
 
 - user: rpcuser
 - pw: rpcpassword
@@ -37,10 +37,9 @@ ZMQ exposed on port 29000
 
 ## Troubleshooting
 
-Rebuild the Docker image: `docker build --pull --no-cache --tag regtest-image:latest .`
+1. `docker build --pull --no-cache --tag bitcoin-simulated-network-image:latest .`
+2. `./s/stop`
 
 ## Credit
 
-Thank you Alexey Lunacharsky for building the foundation this project was built on (https://github.com/alun/bitcoin-regtest)
-
-(c) 2015-2016 Alexey Lunacharsky
+Credit to Alexey Lunacharsky for [the foundation](https://github.com/alun/bitcoin-regtest) this project was built on

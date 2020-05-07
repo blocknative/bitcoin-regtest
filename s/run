@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker run -d -p 1999:1999 -p 29000:29000 --name regtest regtest-image
+docker run -d -p 1999:1999 -p 29000:29000 --name bitcoin-simulated-network bitcoin-simulated-network-image

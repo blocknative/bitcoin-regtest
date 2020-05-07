@@ -2,5 +2,5 @@
 
 set -e
 
-docker stop regtest
-docker rm regtest
+docker stop bitcoin-simulated-network
+docker rm bitcoin-simulated-network

@@ -1,7 +1,7 @@
 {
-  "name": "bitcoin-regtest",
+  "name": "bitcoin-simulated-network",
   "version": "0.0.1",
-  "description": "Bitcoin regtest images generator",
+  "description": "Bitcoin regtest network with simulated activity",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,7 +15,7 @@
     "docker",
     "image"
   ],
-  "author": "Blocknative",
+  "author": "Blocknative, Alexey Lunacharsky",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/blocknative/bitcoin-regtest/issues"
