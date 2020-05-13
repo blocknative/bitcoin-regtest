@@ -16,7 +16,7 @@ async function main() {
   try {
     // If regtest nodes are already running stop them
     const dockerPsOut = execSync('docker ps -a').toString()
-    if (dockerPsOut.includes('regtest')) {
+    if (dockerPsOut.includes('bitcoin-simulated-network')) {
       console.log('--- CLEANING UP FROM PREVIOUS RUN ---')
       execSync(`${__dirname}/s/stop`)
       console.log('Done')
