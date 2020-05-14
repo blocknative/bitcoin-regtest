@@ -66,17 +66,15 @@ async function fundUsers() {
   }
 }
 
-async function randomTransaction() {
-  // Wait between 0.05-1s
-  await new Promise(r => setTimeout(r, randomNumber(10, 100)))
+function randomTransaction() {
+  // Start sending next random tx now so it doesn't wait for this one to send.
+  // They seem to send serial anyway
+  setTimeout(randomTransaction, 10)
 
   // Choose sender, receiver, amt to send
   const sender = randomInteger(0, N_USERS - 1)
   const receiver = randomInteger(0, N_USERS - 1)
   const amount = randomNumber(0.00001, 0.01).toFixed(5)
-
-  // Start sending next random tx now so it doesn't wait for this one to send
-  randomTransaction()
 
   // Generate receive addr
   const toAddress = execSync(`${__dirname}/cli/user${receiver} -regtest getnewaddress`).toString()
